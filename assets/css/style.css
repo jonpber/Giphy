@@ -1,8 +1,33 @@
+body {
+	background-image: url("../images/retina_wood.png");
+}
+
 .gifDiv {
 	display: inline-block;
-	margin: 10px;
+	margin: 25px 5px 10px;
+	background-image: url(../images/polaroid1.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	padding: 85px 41px 54px;
+}
+
+p, button {
+	font-family: 'Rock Salt', cursive;
 }
 
 button {
 	margin: 5px;
+	background: none;
+	background-image: url(../images/sticker.png);
+	background-size: 100% 100%;
+	border: 0;
+	font-size: 19px;
+	padding: 5px 15px;
+	color: #4b5257;
+	font-weight: bold;
+}
+
+p {
+	margin: 10px 0;
+	font-size: 18px;
 }
