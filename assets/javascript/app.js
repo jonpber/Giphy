@@ -1,13 +1,13 @@
 $(function() {
 		var searchButtons = ["pokemon", "gravity falls", "rick and morty", 
-		"simpsons", "animaniacs", "futurama", " family guy", "archer", "south park"];
+		"simpsons", "animaniacs", "futurama", " family guy", "archer", "south park",
+		"cowboy bebop", "american dad", "bob's burgers"];
 
 		function buttonLoad(){
 			$(".buttonSlot").empty();
 			for (var i = 0; i < searchButtons.length; i++){
 				var tempButton = $("<button class='gifButton'>");
 				tempButton.text(searchButtons[i]);
-				console.log(tempButton);
 				
 				var leftOrRight = Math.round(Math.random());
          		var tiltVal = Math.floor(Math.random() * 2 + 1);
@@ -74,8 +74,25 @@ $(function() {
 
 	    $("body").on("click", ".addButton", function(){
 	    	if ($(this).prev().val() !== ""){
-	    		searchButtons[searchButtons.length] = $(this).prev().val();
-	    		buttonLoad();
+	    		// searchButtons[searchButtons.length] = $(this).prev().val();
+
+	    		var tempButton = $("<button class='gifButton'>");
+				tempButton.text($(this).prev().val());
+				
+				var leftOrRight = Math.round(Math.random());
+         		var tiltVal = Math.floor(Math.random() * 2 + 1);
+
+     			if (leftOrRight === 0){
+     				tempButton.css("transform", "rotate(-" + tiltVal + "deg)");
+     			}
+
+     			else {
+     				tempButton.css("transform", "rotate(" + tiltVal + "deg)");
+     			}
+
+				$(".buttonSlot").append(tempButton);
+
+	    		// buttonLoad();
 	    	}
 	    });
 
