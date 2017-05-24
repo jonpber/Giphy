@@ -1,13 +1,16 @@
 $(function() {
 		var searchButtons = ["pokemon", "gravity falls", "rick and morty", 
-		"simpsons", "animaniacs", "futurama", " family guy", "archer", "south park"];
+		"simpsons", "animaniacs", "futurama", " family guy", "archer", "south park",
+		"cowboy bebop", "american dad", "bob's burgers"];
+
+		var movingGifHolder = new Image();
+		var stillGifHolder = new Image();
 
 		function buttonLoad(){
 			$(".buttonSlot").empty();
 			for (var i = 0; i < searchButtons.length; i++){
 				var tempButton = $("<button class='gifButton'>");
 				tempButton.text(searchButtons[i]);
-				console.log(tempButton);
 				
 				var leftOrRight = Math.round(Math.random());
          		var tiltVal = Math.floor(Math.random() * 2 + 1);
@@ -74,52 +77,46 @@ $(function() {
 
 	    $("body").on("click", ".addButton", function(){
 	    	if ($(this).prev().val() !== ""){
-	    		searchButtons[searchButtons.length] = $(this).prev().val();
-	    		buttonLoad();
+	    		// searchButtons[searchButtons.length] = $(this).prev().val();
+
+	    		var tempButton = $("<button class='gifButton'>");
+				tempButton.text($(this).prev().val());
+				
+				var leftOrRight = Math.round(Math.random());
+         		var tiltVal = Math.floor(Math.random() * 2 + 1);
+
+     			if (leftOrRight === 0){
+     				tempButton.css("transform", "rotate(-" + tiltVal + "deg)");
+     			}
+
+     			else {
+     				tempButton.css("transform", "rotate(" + tiltVal + "deg)");
+     			}
+
+				$(".buttonSlot").append(tempButton);
+
+	    		// buttonLoad();
 	    	}
+	    });
+		$(".gifHolder").on("mouseover", ".gifDiv", function(){
+			stillGifHolder.src = $(this).attr("data-stillUrl");
+			movingGifHolder.src = $(this).attr("data-movingGif");
+
 	    });
 
 	    $(".gifHolder").on("click", ".gifDiv", function(){
 	    	if ($(this).attr("data-playing") == 0){
 	    		$(this).html("<img src =" + $(this).attr("data-movingGif") + "><p>Rating: " + $(this).attr("data-rating") + "</p>");
-	    		$(this).attr("data-playing", 1);
+    			$(this).attr("data-playing", 1);
+
 	    	}
 
 	    	else {
-	    		$(this).html("<img src =" + $(this).attr("data-stillUrl") + "><p>Rating: " + $(this).attr("data-rating") + "</p>");
-	    		$(this).attr("data-playing", 0);
+	    		$(this).html("<img src=" + $(this).attr("data-stillUrl") + "><p>Rating: " + $(this).attr("data-rating") + "</p>");
+    			$(this).attr("data-playing", 0);
 	    	}
 	    });
 
-	 //    function preloadGifs(){
-	 //    	var gifs = $(".gifHolder").children();
-	 //    	for (i = 0; i < gifs.length; i++){
-	 //    		var preloadImg = $("<img src=" + $(gifs[i]).attr("data-movingGif") + ">");
-	 //    		var preloadImgStill = $("<img src=" + $(gifs[i]).attr("data-stillUrl") + ">");
-	 //    	}
-	 //    }
-
-		// $(window).resize(function() {
-		// 	if ($(this).width() >= 1200) {
-		// 	preloadGifs();
-		// 	}
-
-		// 	else if ($(this).width() < 1280 && $(this).width()>= 992) {
-		// 	preloadGifs();
-		// 	}
-
-		// 	else if ($(this).width() < 992 && $(this).width()>= 768){
-		// 	preloadGifs();
-		// 	}
-
-		// 	else if ($(this).width() < 768 && $(this).width()>= 568){
-		// 	preloadGifs();
-		// 	}
-
-		// 	else {
-		// 	preloadGifs();
-		// 	}
-		// });
 
 });
 
