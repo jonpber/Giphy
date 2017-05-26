@@ -44,32 +44,6 @@ $(function() {
 
          	var gifSearch = "https://api.giphy.com/v1/gifs/search?q=" + searchQuery + "&api_key=dc6zaTOxFJmzC&limit=10&rating=" + rating;
 
-         // 	$.getJSON(gifSearch, function(json){
-         // 		for (var i = 0; i < json.data.length; i++){
-         // 			var gifDiv = $("<div>");
-         // 			gifDiv.attr("data-stillUrl", json.data[i].images.fixed_height_still.url)
-         // 			.attr("data-movingGif", json.data[i].images.fixed_height.url)
-         // 			.attr("data-rating", json.data[i].rating)
-         // 			.attr("data-playing", 0)
-         // 			.append("<img src =" + gifDiv.attr("data-stillUrl") + " onerror='errorImg(this)'><p>Rating: " + gifDiv.attr("data-rating") + "</p>")
-         // 			.addClass("gifDiv");
-
-         // 			//give a random tilt to gifs
-         // 			var leftOrRight = Math.round(Math.random());
-         // 			var tiltVal = Math.floor(Math.random() * 3 + 1);
-
-         // 			if (leftOrRight === 0){
-         // 				gifDiv.css("transform", "rotate(-" + tiltVal + "deg)");
-         // 			}
-
-         // 			else {
-         // 				gifDiv.css("transform", "rotate(" + tiltVal + "deg)");
-         // 			}
-
-     				// $(".gifHolder").append(gifDiv);
-         // 		}
-         // 	})
-
          $.ajax({url: gifSearch, method:"GET"}).done(function(response){
          	for (var i = 0; i < response.data.length; i++){
      			var gifDiv = $("<div>");
