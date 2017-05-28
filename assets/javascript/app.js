@@ -57,6 +57,7 @@ $(function() {
      			//give a random tilt to gifs
      			var leftOrRight = Math.round(Math.random());
      			var tiltVal = Math.floor(Math.random() * 3 + 1);
+     			gifDiv.hide();
 
      			if (leftOrRight === 0){
      				gifDiv.css("transform", "rotate(-" + tiltVal + "deg)");
@@ -67,6 +68,7 @@ $(function() {
      			}
 
  				$(".gifHolder").append(gifDiv);
+ 				gifDiv.fadeIn();
  			}
          });
 
