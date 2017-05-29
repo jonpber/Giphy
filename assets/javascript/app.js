@@ -71,6 +71,9 @@ $(function() {
 
 						$(".gifHolder").append(gifDiv);
 						gifDiv.fadeIn();
+
+					stillGifHolder.src = $(gifDiv).attr("data-stillUrl");
+					movingGifHolder.src = $(gifDiv).attr("data-movingGif");
 				}
 			});
 
@@ -99,7 +102,7 @@ $(function() {
 			}
 		});
 
-		$(".gifHolder").on("mouseenter", ".gifDiv", function(){
+		$(".gifHolder").on("mouseover", ".gifDiv", function(){
 			stillGifHolder.src = $(this).attr("data-stillUrl");
 			movingGifHolder.src = $(this).attr("data-movingGif");
 		});
