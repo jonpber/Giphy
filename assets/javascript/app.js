@@ -107,12 +107,14 @@ $(function() {
 
 		$(".gifHolder").on("click", ".gifDiv", function(){
 			if ($(this).attr("data-playing") == 0){
-				$(this).html("<img src =" + $(this).attr("data-movingGif") + "><p>Rating: " + $(this).attr("data-rating") + "</p>");
+				$(this).children().eq(0).attr("src", $(this).attr("data-movingGif"));
+				// $(this).html("<img src =" + $(this).attr("data-movingGif") + "><p>Rating: " + $(this).attr("data-rating") + "</p>");
 				$(this).attr("data-playing", 1);
 			}
 
 			else {
-				$(this).html("<img src=" + $(this).attr("data-stillUrl") + "><p>Rating: " + $(this).attr("data-rating") + "</p>");
+				$(this).children().eq(0).attr("src", $(this).attr("data-stillUrl"));
+				// $(this).html("<img src=" + $(this).attr("data-stillUrl") + "><p>Rating: " + $(this).attr("data-rating") + "</p>");
 				$(this).attr("data-playing", 0);
 			}
 		});
