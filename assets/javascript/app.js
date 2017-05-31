@@ -41,7 +41,6 @@ $(function() {
 			tempSearchQuery = $(this).text();
 			searchQuery = tempSearchQuery.replace(" ", "+");
 			var rating = "pg"
-
 			var gifSearch = "https://api.giphy.com/v1/gifs/search?q=" + searchQuery + "&api_key=dc6zaTOxFJmzC&limit=10&rating=" + rating;
 
 			$.ajax({url: gifSearch, method:"GET"}).done(function(response){
@@ -53,7 +52,7 @@ $(function() {
 					.attr("data-playing", 0)
 					.append("<img src =" + gifDiv.attr("data-stillUrl") + " onerror='errorImg(this)'><p>Rating: " + gifDiv.attr("data-rating") + "</p>")
 					.addClass("gifDiv");
-
+					
 					//give a random tilt to gifs
 					var leftOrRight = Math.round(Math.random());
 					var tiltVal = Math.floor(Math.random() * 3 + 1);
@@ -69,11 +68,8 @@ $(function() {
 						gifDiv.attr("data-tilt", + tiltVal)
 					}
 
-						$(".gifHolder").append(gifDiv);
-						gifDiv.fadeIn();
-
-					stillGifHolder.src = $(gifDiv).attr("data-stillUrl");
-					movingGifHolder.src = $(gifDiv).attr("data-movingGif");
+					$(".gifHolder").append(gifDiv);
+					gifDiv.fadeIn();	
 				}
 			});
 
